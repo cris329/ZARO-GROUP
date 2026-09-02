@@ -37,8 +37,8 @@ export function LoginScreen({ navigation }: { navigation: any }) {
         <View style={styles.logo}>
           <Text style={styles.logoText}>O</Text>
         </View>
-        <Text style={styles.title}>OMEBLAS</Text>
-        <Text style={styles.subtitle}>Gestión agrícola para el campo colombiano</Text>
+        <Text style={styles.title}>ZARO GROUP</Text>
+        <Text style={styles.subtitle}>Innovación, gestión y crecimiento</Text>
       </View>
 
       <View style={styles.form}>
@@ -46,7 +46,7 @@ export function LoginScreen({ navigation }: { navigation: any }) {
           label="Email"
           value={email}
           onChangeText={setEmail}
-          placeholder="campesino@example.com"
+          placeholder="usuario@ejemplo.com"
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}

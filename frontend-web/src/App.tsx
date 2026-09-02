@@ -14,7 +14,7 @@ export const App: FC<AppProps> = ({ children }) => {
   useEffect(() => {
     const handleOffline = () => {
       document.title = '📡 sin conexión'
-      setTimeout(() => (document.title = 'OMEBLAS'), 2000)
+      setTimeout(() => (document.title = 'ZARO GROUP'), 2000)
     }
     window.addEventListener('offline', handleOffline)
     return () => window.removeEventListener('offline', handleOffline)

@@ -45,7 +45,7 @@ export const RegisterForm: FC = () => {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="campesino@example.com"
+        placeholder="usuario@ejemplo.com"
         error={errors.email}
         autoComplete="email"
         required

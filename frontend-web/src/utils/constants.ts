@@ -17,7 +17,7 @@ export const ROUTES = {
   settings: '/settings',
 } as const
 
-export const APP_NAME = 'OMEBLAS'
+export const APP_NAME = 'ZARO GROUP'
 
 export const SYNC_INTERVAL_MS = 30000
 export const RETRY_BACKOFF_MS = [1000, 2000, 4000, 8000, 16000]

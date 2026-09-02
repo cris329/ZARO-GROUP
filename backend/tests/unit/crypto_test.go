@@ -47,7 +47,7 @@ func TestGenerateAndParseJWT(t *testing.T) {
 
 func TestEncryptAES(t *testing.T) {
 	key := []byte(strings.Repeat("k", 32))
-	plain := "dato sensible del campesino"
+	plain := "dato sensible del usuario"
 
 	enc, err := EncryptAES(plain, key)
 	if err != nil {

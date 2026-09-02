@@ -38,7 +38,7 @@ export const CreateProduct: FC = () => {
           ← Volver a productos
         </button>
         <h1 className="text-2xl font-bold text-gray-900">Nuevo producto</h1>
-        <p className="text-gray-500 text-sm mt-1">Registre un nuevo producto agrícola</p>
+        <p className="text-gray-500 text-sm mt-1">Registre un nuevo producto</p>
       </div>
 
       <Card>

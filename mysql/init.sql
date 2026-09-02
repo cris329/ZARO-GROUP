@@ -1,4 +1,4 @@
--- ===== OMEBLAS - Init MySQL con seguridad =====
+-- ===== ZARO GROUP - Init MySQL con seguridad =====
 -- Nota: el usuario y password de app se crean automáticamente
 -- por la imagen docker oficial (MYSQL_USER / MYSQL_PASSWORD).
 

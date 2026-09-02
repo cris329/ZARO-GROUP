@@ -1,11 +1,11 @@
 #!/bin/sh
-# ===== OMEBLAS - Restore de MySQL =====
+# ===== ZARO GROUP - Restore de MySQL =====
 set -e
 
 MYSQL_HOST="${DB_HOST:-localhost}"
 MYSQL_USER="${MYSQL_USER:-root}"
 MYSQL_PASSWORD="${MYSQL_ROOT_PASSWORD:-}"
-MYSQL_DATABASE="${MYSQL_DATABASE:-omeblas}"
+MYSQL_DATABASE="${MYSQL_DATABASE:-zaro_group}"
 BACKUP_DIR="/backups"
 
 if [ -z "$1" ]; then

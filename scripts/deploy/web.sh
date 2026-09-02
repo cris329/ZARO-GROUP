@@ -1,10 +1,10 @@
 #!/bin/bash
-# ===== OMEBLAS - Deploy del frontend web =====
+# ===== ZARO GROUP - Deploy del frontend web =====
 set -e
 
 MODE="${1:-deploy}" # deploy | rollback
 
-echo "OMEBLAS Web - Modo: $MODE"
+echo "ZARO GROUP Web - Modo: $MODE"
 
 case "$MODE" in
   deploy)
@@ -31,9 +31,9 @@ case "$MODE" in
 
   rollback)
     echo "Revirtiendo frontend..."
-    PREV_TAG=$(docker images omeblas_web -q | head -2 | tail -1)
+    PREV_TAG=$(docker images zaro_web -q | head -2 | tail -1)
     if [ -n "$PREV_TAG" ]; then
-      docker tag "$PREV_TAG" omeblas_web:latest
+      docker tag "$PREV_TAG" zaro_web:latest
       docker compose -f docker-compose.prod.yml up -d --no-build frontend-web
       echo "Rollback completado."
     else

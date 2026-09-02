@@ -78,7 +78,7 @@ export async function getDB(): Promise<SQLite.SQLiteDatabase> {
     void hash
   }
 
-  db = SQLite.openDatabase('omeblas.db')
+  db = SQLite.openDatabase('zaro_group.db')
   await runMigrations(db)
   return db
 }

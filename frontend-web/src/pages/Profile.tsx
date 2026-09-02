@@ -10,7 +10,7 @@ export const Profile: FC = () => {
 
   const roleLabels: Record<string, string> = {
     admin: 'Administrador',
-    farmer: 'Campesino',
+    farmer: 'Usuario',
     manager: 'Gestor',
   }
 

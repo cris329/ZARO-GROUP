@@ -53,7 +53,7 @@ export function RegisterScreen({ navigation }: { navigation: any }) {
           label="Email"
           value={email}
           onChangeText={setEmail}
-          placeholder="campesino@example.com"
+          placeholder="usuario@ejemplo.com"
           keyboardType="email-address"
           autoCapitalize="none"
         />

@@ -1,9 +1,9 @@
 #!/bin/bash
-# ===== OMEBLAS - Monitoreo: estado de infraestructura =====
+# ===== ZARO GROUP - Monitoreo: estado de infraestructura =====
 set -e
 
 TIME=$(date '+%Y-%m-%d %H:%M:%S')
-echo "===== OMEBLAS Status: $TIME ====="
+echo "===== ZARO GROUP Status: $TIME ====="
 echo ""
 
 echo "--- Contenedores ---"

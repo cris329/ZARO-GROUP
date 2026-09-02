@@ -1,5 +1,5 @@
 #!/bin/bash
-# ===== OMEBLAS - Entorno de desarrollo =====
+# ===== ZARO GROUP - Entorno de desarrollo =====
 # Levanta backend con recarga en caliente (air) y docker compose de dev.
 
 set -e
@@ -40,7 +40,7 @@ case "$ACTION" in
 
   backup)
     echo "Creando backup de la base de datos dev..."
-    docker compose exec -T mysql mysqldump -uapp_user -papp_password omeblas \
+    docker compose exec -T mysql mysqldump -uapp_user -papp_password zaro_group \
       --single-transaction --quick | gzip > dumps/dev_backup_$(date +%Y%m%d_%H%M%S).sql.gz
     echo "Backup creado."
     ;;

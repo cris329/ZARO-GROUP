@@ -1,10 +1,10 @@
 #!/bin/bash
-# ===== OMEBLAS - Deploy del backend =====
+# ===== ZARO GROUP - Deploy del backend =====
 set -e
 
 MODE="${1:-deploy}" # deploy | rollback
 
-echo "OMEBLAS Backend - Modo: $MODE"
+echo "ZARO GROUP Backend - Modo: $MODE"
 
 deploy() {
   echo "Compilando imagen de producción..."
@@ -32,9 +32,9 @@ deploy() {
 rollback() {
   echo "Healthcheck falló, revirtiendo..."
   docker compose -f docker-compose.prod.yml logs backend --tail 50
-  PREV_TAG=$(docker images omeblas_backend -q | head -2 | tail -1)
+  PREV_TAG=$(docker images zaro_backend -q | head -2 | tail -1)
   if [ -n "$PREV_TAG" ]; then
-    docker tag "$PREV_TAG" omeblas_backend:latest
+    docker tag "$PREV_TAG" zaro_backend:latest
     docker compose -f docker-compose.prod.yml up -d --no-build backend
     echo "Rollback completado."
   else

@@ -29,7 +29,7 @@ export const ProductList: FC<ProductListProps> = ({ products, onView, isLoading 
       <div className="text-center py-16">
         <p className="text-5xl mb-4">🌱</p>
         <h3 className="text-lg font-semibold text-gray-900">No hay productos</h3>
-        <p className="text-sm text-gray-500 mt-1">Registre su primer producto agrícola</p>
+        <p className="text-sm text-gray-500 mt-1">Registre su primer producto</p>
       </div>
     )
   }

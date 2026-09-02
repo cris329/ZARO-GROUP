@@ -1,14 +1,13 @@
 import { FC } from 'react'
 import { RegisterForm } from '@/components/auth/RegisterForm'
+import logo from '@/assets/LOGO.png'
 
 export const Register: FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-green-600 flex items-center justify-center text-white text-3xl font-bold">
-            O
-          </div>
+          <img src={logo} alt="ZARO GROUP" className="w-20 h-20 mx-auto mb-4 rounded-2xl object-contain" />
           <h1 className="text-2xl font-bold text-gray-900">Crear cuenta</h1>
           <p className="text-gray-500 text-sm mt-1">Empiece a gestionar su producción hoy</p>
         </div>

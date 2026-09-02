@@ -31,9 +31,9 @@ export const Dashboard: FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">
-            Hola, {user?.name?.split(' ')[0] ?? 'campesino'}
+            Hola, {user?.name?.split(' ')[0] ?? 'usuario'}
           </h1>
-          <p className="text-gray-500 text-sm mt-1">Panel de gestión agrícola</p>
+          <p className="text-gray-500 text-sm mt-1">Panel de gestión</p>
         </div>
         <SyncStatus />
       </div>

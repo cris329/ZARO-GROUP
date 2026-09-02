@@ -15,7 +15,7 @@ export function DashboardScreen({ navigation }: { navigation: any }) {
 
   const totalInventory = products.reduce((s, p) => s + p.price * p.quantity, 0)
   const lowStock = products.filter((p) => p.quantity <= 10).slice(0, 5)
-  const firstName = user?.name?.split(' ')[0] ?? 'campesino'
+  const firstName = user?.name?.split(' ')[0] ?? 'usuario'
 
   return (
     <View style={styles.container}>

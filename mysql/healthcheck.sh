@@ -1,5 +1,5 @@
 #!/bin/sh
-# ===== OMEBLAS - Healthcheck de MySQL =====
+# ===== ZARO GROUP - Healthcheck de MySQL =====
 HOST="${1:--h localhost}"
 USER="${2:-root}"
 

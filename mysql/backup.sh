@@ -1,11 +1,11 @@
 #!/bin/sh
-# ===== OMEBLAS - Backup automático de MySQL =====
+# ===== ZARO GROUP - Backup automático de MySQL =====
 set -e
 
 MYSQL_HOST="${DB_HOST:-localhost}"
 MYSQL_USER="${MYSQL_USER:-root}"
 MYSQL_PASSWORD="${MYSQL_ROOT_PASSWORD:-}"
-MYSQL_DATABASE="${MYSQL_DATABASE:-omeblas}"
+MYSQL_DATABASE="${MYSQL_DATABASE:-zaro_group}"
 BACKUP_DIR="/backups"
 RETENTION_DAYS=7
 

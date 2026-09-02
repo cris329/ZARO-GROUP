@@ -1,5 +1,5 @@
 -- =============================================
--- OMEBLAS - Migración 001 - Tablas iniciales
+-- ZARO GROUP - Migración 001 - Tablas iniciales
 -- =============================================
 
 -- Tabla: users

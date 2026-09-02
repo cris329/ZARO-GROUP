@@ -1,6 +1,7 @@
 import { FC, useEffect } from 'react'
 import { useAuth } from '@/hooks/useAuth'
 import { LoginForm } from '@/components/auth/LoginForm'
+import logo from '@/assets/LOGO.png'
 
 export const Login: FC = () => {
   const { isAuthenticated } = useAuth()
@@ -15,11 +16,9 @@ export const Login: FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-green-600 flex items-center justify-center text-white text-3xl font-bold">
-            O
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900">OMEBLAS</h1>
-          <p className="text-gray-500 text-sm mt-1">Gestión agrícola para el campo colombiano</p>
+          <img src={logo} alt="ZARO GROUP" className="w-20 h-20 mx-auto mb-4 rounded-2xl object-contain" />
+          <h1 className="text-2xl font-bold text-gray-900">ZARO GROUP</h1>
+          <p className="text-gray-500 text-sm mt-1">Innovación, gestión y crecimiento</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-xl p-8">

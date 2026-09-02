@@ -4,6 +4,7 @@ import { useUIStore } from '@/store/uiStore'
 import { useAuth } from '@/hooks/useAuth'
 import { OfflineBanner } from '@/components/sync/OfflineBanner'
 import { SyncButton } from '@/components/sync/SyncButton'
+import logo from '@/assets/LOGO.png'
 
 interface LayoutProps {
   children: ReactNode
@@ -32,12 +33,10 @@ export const AppLayout: FC<LayoutProps> = ({ children }) => {
         } bg-white border-r border-gray-100 flex-col transition-all duration-200 overflow-hidden hidden md:flex`}
       >
         <div className="flex items-center gap-3 px-5 py-6">
-          <div className="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center text-white font-bold">
-            O
-          </div>
+          <img src={logo} alt="ZARO GROUP" className="w-10 h-10 rounded-xl object-contain" />
           <div>
-            <p className="font-bold text-gray-900 leading-none">OMEBLAS</p>
-            <p className="text-xs text-gray-400 mt-1">Agro gestión</p>
+            <p className="font-bold text-gray-900 leading-none">ZARO GROUP</p>
+            <p className="text-xs text-gray-400 mt-1">Innovación, gestión y crecimiento</p>
           </div>
         </div>
 

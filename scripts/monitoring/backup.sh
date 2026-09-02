@@ -1,5 +1,5 @@
 #!/bin/bash
-# ===== OMEBLAS - Copia de seguridad de la base de datos =====
+# ===== ZARO GROUP - Copia de seguridad de la base de datos =====
 set -e
 
 DUMPS="${BACKUP_DIR:-$PWD/dumps}"
@@ -15,10 +15,10 @@ while true; do
 
   echo "[$(date '+%H:%M:%S')] Creando backup..."
   docker compose exec -T mysql \
-    mysqldump -u"$DB_USER" -p"$DB_PASS" omeblas \
+    mysqldump -u"$DB_USER" -p"$DB_PASS" zaro_group \
     --single-transaction --quick --lock-tables=false \
-  | gzip > "$DUMPS/omeblas_$STAMP.sql.gz"
+  | gzip > "$DUMPS/zaro_group_$STAMP.sql.gz"
 
-  echo "Backup guardado en $DUMPS/omeblas_$STAMP.sql.gz"
+  echo "Backup guardado en $DUMPS/zaro_group_$STAMP.sql.gz"
   sleep 24h
 done

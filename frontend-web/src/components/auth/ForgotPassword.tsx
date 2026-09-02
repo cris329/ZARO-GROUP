@@ -39,7 +39,7 @@ export const ForgotPassword: FC = () => {
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="campesino@example.com"
+        placeholder="usuario@ejemplo.com"
         error={error}
         autoComplete="email"
         required

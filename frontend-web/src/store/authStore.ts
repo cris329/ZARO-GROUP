@@ -72,7 +72,7 @@ export const useAuthStore = create<AuthState>()(
       },
     }),
     {
-      name: 'omeblas-auth',
+      name: 'zaro-group-auth',
       partialize: (state) => ({
         user: state.user,
         token: state.token,

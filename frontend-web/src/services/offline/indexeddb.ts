@@ -1,7 +1,7 @@
 import { openDB, IDBPDatabase } from 'idb'
 import { Product, Order } from '@/types'
 
-const DB_NAME = 'omeblas-offline'
+const DB_NAME = 'zaro-group-offline'
 const DB_VERSION = 1
 
 type DBSchema = {

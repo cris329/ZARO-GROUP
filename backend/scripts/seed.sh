@@ -1,19 +1,19 @@
 #!/bin/sh
-# ===== OMEBLAS - Seed de datos de prueba =====
+# ===== ZARO GROUP - Seed de datos de prueba =====
 set -e
 
 MYSQL_HOST="${DB_HOST:-mysql}"
 MYSQL_PORT="${DB_PORT:-3306}"
 MYSQL_USER="${MYSQL_USER:-app_user}"
 MYSQL_PASSWORD="${MYSQL_PASSWORD:-}"
-MYSQL_DATABASE="${MYSQL_DATABASE:-omeblas}"
+MYSQL_DATABASE="${MYSQL_DATABASE:-zaro_group}"
 
 echo "Cargando datos de prueba en ${MYSQL_DATABASE}..."
 
 mysql -h "$MYSQL_HOST" -P "$MYSQL_PORT" -u "$MYSQL_USER" -p"$MYSQL_PASSWORD" "$MYSQL_DATABASE" <<'SQL'
 -- Usuario de prueba
 INSERT INTO users (id, name, email, password_hash, role)
-VALUES ('usr_seed_01', 'Campesino Demo', 'demo@omeblas.com', '$2y$12$dummyhashdummyhashdummyhashdummyhashdummyhashdummyhashdummy22', 'farmer')
+VALUES ('usr_seed_01', 'Usuario Demo', 'demo@zarogroup.com', '$2y$12$dummyhashdummyhashdummyhashdummyhashdummyhashdummyhashdummy22', 'farmer')
 ON DUPLICATE KEY UPDATE name = VALUES(name);
 
 -- Productos de prueba

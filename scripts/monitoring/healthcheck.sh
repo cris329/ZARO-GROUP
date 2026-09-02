@@ -1,5 +1,5 @@
 #!/bin/bash
-# ===== OMEBLAS - Healthcheck del API =====
+# ===== ZARO GROUP - Healthcheck del API =====
 HOST="${HEALTHCHECK_HOST:-http://localhost:8080}"
 TIMEOUT="${HEALTHCHECK_TIMEOUT:-5}"
 
@@ -14,7 +14,7 @@ for i in $(seq 1 "${HEALTHCHECK_RETRIES:-20}"); do
 
   # Verificar que la respuesta contenga status ok
   if echo "$RESPONSE" | grep -q '"status": *"ok"'; then
-    echo "OMEBLAS API saludable ✓"
+    echo "ZARO GROUP API saludable ✓"
     exit 0
   fi
 
