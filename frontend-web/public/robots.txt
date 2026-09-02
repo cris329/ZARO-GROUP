@@ -3,4 +3,4 @@ Allow: /
 Disallow: /api/
 Disallow: /admin
 
-Sitemap: https://app.omeblas.com/sitemap.xml
+Sitemap: https://app.zarogroup.com/sitemap.xml
