@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: omeblas_mysql
+    container_name: zaro_mysql
     build:
       context: ./mysql
     environment:
@@ -20,12 +20,12 @@ services:
       retries: 5
       start_period: 30s
     networks:
-      - omeblas_net
+      - zaro_net
     restart: unless-stopped
 
   redis:
     image: redis:7-alpine
-    container_name: omeblas_redis
+    container_name: zaro_redis
     command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD}
@@ -35,7 +35,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - omeblas_net
+      - zaro_net
     restart: unless-stopped
     profiles:
       - optional
@@ -44,7 +44,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
-    container_name: omeblas_backend
+    container_name: zaro_backend
     env_file:
       - .env
     environment:
@@ -59,7 +59,7 @@ services:
       mysql:
         condition: service_healthy
     networks:
-      - omeblas_net
+      - zaro_net
     restart: unless-stopped
     user: "appuser"
 
@@ -67,7 +67,7 @@ services:
     build:
       context: ./frontend-web
       dockerfile: Dockerfile.dev
-    container_name: omeblas_web
+    container_name: zaro_web
     environment:
       VITE_API_URL: ${REACT_APP_API_URL}
     ports:
@@ -78,7 +78,7 @@ services:
     depends_on:
       - backend
     networks:
-      - omeblas_net
+      - zaro_net
     read_only: true
     tmpfs:
       - /tmp
@@ -88,7 +88,7 @@ services:
     build:
       context: ./mobile
       dockerfile: Dockerfile.dev
-    container_name: omeblas_mobile_build
+    container_name: zaro_mobile_build
     env_file:
       - .env
     ports:
@@ -101,12 +101,12 @@ services:
     depends_on:
       - backend
     networks:
-      - omeblas_net
+      - zaro_net
     profiles:
       - development
 
 networks:
-  omeblas_net:
+  zaro_net:
     driver: bridge
 
 volumes:

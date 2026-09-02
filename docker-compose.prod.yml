@@ -1,7 +1,7 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: omeblas_mysql
+    container_name: zaro_mysql
     build:
       context: ./mysql
     environment:
@@ -30,7 +30,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: omeblas_redis
+    container_name: zaro_redis
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--requirepass", "${REDIS_PASSWORD}"]
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
@@ -47,7 +47,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: omeblas_backend
+    container_name: zaro_backend
     env_file:
       - .env
     environment:
@@ -79,7 +79,7 @@ services:
     build:
       context: ./frontend-web
       dockerfile: Dockerfile
-    container_name: omeblas_web
+    container_name: zaro_web
     environment:
       VITE_API_URL: ${REACT_APP_API_URL}
     ports:

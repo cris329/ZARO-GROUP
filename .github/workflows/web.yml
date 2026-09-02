@@ -55,7 +55,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build web image
         run: |
-          docker build -t ghcr.io/omeblas/omeblas-web:prod \
+          docker build -t ghcr.io/zaro-group/web:prod \
             --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
             -f frontend-web/Dockerfile frontend-web
       - name: Deploy via SSH
@@ -65,6 +65,6 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
-            cd /opt/omeblas
+            cd /opt/zaro-group
             # Push image to server registry via compose
             docker compose -f docker-compose.prod.yml up -d --no-deps --build frontend-web

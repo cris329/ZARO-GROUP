@@ -58,7 +58,7 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: omeblas_test
+          MYSQL_DATABASE: zaro_group_test
         ports:
           - 3306:3306
         options: >-
@@ -93,7 +93,7 @@ jobs:
           TEST_DB_PORT: "3306"
           TEST_DB_USER: root
           TEST_DB_PASS: root
-          TEST_DB_NAME: omeblas_test
+          TEST_DB_NAME: zaro_group_test
         run: go test ./tests/...
 
   build:
@@ -103,11 +103,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build backend image
-        run: docker build -t ghcr.io/omeblas/omeblas-backend:prod -f backend/Dockerfile backend
+        run: docker build -t ghcr.io/zaro-group/backend:prod -f backend/Dockerfile backend
       - name: Vulnerability scan (Trivy)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ghcr.io/omeblas/omeblas-backend:prod
+          image-ref: ghcr.io/zaro-group/backend:prod
           format: sarif
           output: trivy-results.sarif
         continue-on-error: true
@@ -135,5 +135,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
-            cd /opt/omeblas
+            cd /opt/zaro-group
             ./scripts/deploy/backend.sh deploy
