@@ -1,0 +1,70 @@
+name: Frontend Web CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend-web/**"
+      - ".github/workflows/web.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "frontend-web/**"
+
+env:
+  NODE_VERSION: "20"
+
+jobs:
+  lint-test:
+    name: Lint & Test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend-web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend-web/package-lock.json
+      - name: Install deps
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Type check
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm run test -- --coverage
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-coverage
+          path: frontend-web/coverage
+
+  build-deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    needs: lint-test
+    if: github.ref == 'refs/heads/main'
+    concurrency:
+      group: deploy-web
+      cancel-in-progress: false
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build web image
+        run: |
+          docker build -t ghcr.io/omeblas/omeblas-web:prod \
+            --build-arg VITE_API_URL=${{ secrets.VITE_API_URL }} \
+            -f frontend-web/Dockerfile frontend-web
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd /opt/omeblas
+            # Push image to server registry via compose
+            docker compose -f docker-compose.prod.yml up -d --no-deps --build frontend-web

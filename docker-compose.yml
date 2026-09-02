@@ -1,0 +1,114 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: omeblas_mysql
+    build:
+      context: ./mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - omeblas_net
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: omeblas_redis
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    networks:
+      - omeblas_net
+    restart: unless-stopped
+    profiles:
+      - optional
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    container_name: omeblas_backend
+    env_file:
+      - .env
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - omeblas_net
+    restart: unless-stopped
+    user: "appuser"
+
+  frontend-web:
+    build:
+      context: ./frontend-web
+      dockerfile: Dockerfile.dev
+    container_name: omeblas_web
+    environment:
+      VITE_API_URL: ${REACT_APP_API_URL}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend-web:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - omeblas_net
+    read_only: true
+    tmpfs:
+      - /tmp
+    restart: unless-stopped
+
+  mobile-build:
+    build:
+      context: ./mobile
+      dockerfile: Dockerfile.dev
+    container_name: omeblas_mobile_build
+    env_file:
+      - .env
+    ports:
+      - "19000:19000"
+      - "19001:19001"
+      - "19002:19002"
+    volumes:
+      - ./mobile:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - omeblas_net
+    profiles:
+      - development
+
+networks:
+  omeblas_net:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:

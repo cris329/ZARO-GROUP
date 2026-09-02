@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "OMEBLAS",
+    "slug": "omeblas",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#16a34a"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.omeblas.app",
+      "buildNumber": "1"
+    },
+    "android": {
+      "package": "com.omeblas.app",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#16a34a"
+      },
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE", "VIBRATE"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": ["expo-secure-store"],
+    "extra": {
+      "eas": {
+        "projectId": "PROJECT_ID"
+      }
+    }
+  }
+}

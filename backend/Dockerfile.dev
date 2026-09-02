@@ -1,0 +1,28 @@
+FROM golang:1.22-alpine
+
+RUN apk add --no-cache git gcc musl-dev
+
+RUN addgroup -S appuser && adduser -S -G appuser appuser
+
+WORKDIR /app
+
+COPY go.mod ./
+COPY go.sum* ./
+RUN go mod download
+
+COPY . .
+
+RUN chown -R appuser:appuser /app
+
+USER appuser
+
+RUN CGO_ENABLED=0 go build -o bin/api ./cmd/api
+
+EXPOSE 8080
+
+CMD ["go", "run", "./cmd/api"]
+
+# Está pensado para desarrollo con hot-reload.
+# Descomentar para live-reload con air:
+# RUN go install github.com/air-verse/air@latest
+# CMD ["air", "-c", ".air.toml"]

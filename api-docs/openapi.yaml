@@ -1,0 +1,127 @@
+openapi: 3.1.0
+info:
+  title: OMEBLAS API
+  description: API de gestión agrícola offline-first para campesinos colombianos.
+  version: 1.0.0
+servers:
+  - url: https://api.omeblas.com/api/v1
+paths:
+  /health:
+    get:
+      summary: Verificación de salud del servicio
+      responses:
+        "200":
+          description: Servicio operativo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  /auth/register:
+    post:
+      summary: Registro de nuevo usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, password]
+              properties:
+                name: { type: string }
+                email: { type: string, format: email }
+                password: { type: string, minLength: 8 }
+      responses:
+        "201": { description: Usuario creado }
+  /auth/login:
+    post:
+      summary: Inicio de sesión
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        "200":
+          description: Token JWT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                  refresh_token:
+                    type: string
+  /auth/refresh:
+    post:
+      summary: Renovar token de acceso
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        "200":
+          description: Nuevos tokens
+  /products:
+    get:
+      summary: Listar productos
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Lista de productos
+    post:
+      summary: Crear producto
+      security:
+        - bearerAuth: []
+      responses:
+        "201":
+          description: Producto creado
+  /sync:
+    post:
+      summary: Sincronizar datos offline (última escritura gana)
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                last_sync:
+                  type: string
+                  format: date-time
+                products: { type: array }
+                orders: { type: array }
+      responses:
+        "200":
+          description: Resultado de la sincronización
+  /reports/dashboard:
+    get:
+      summary: Métricas del panel de control
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Métricas agregadas
+securitySchemes:
+  bearerAuth:
+    type: http
+    scheme: bearer
+    bearerFormat: JWT

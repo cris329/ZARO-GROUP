@@ -1,0 +1,70 @@
+# ===== Credenciales y secretos =====
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# ===== Dependencias =====
+node_modules/
+backend/vendor/
+*.mod.backup
+
+# ===== Compilación / Build =====
+backend/bin/
+backend/dist/
+*.exe
+*.so
+*.dll
+*.dylib
+frontend-web/dist/
+frontend-web/.vite/
+mobile/.expo/
+mobile/dist/
+mobile/android/app/build/
+mobile/ios/build/
+mobile/*.apk
+mobile/*.ipa
+mobile/.husky/
+
+# ===== Logs =====
+*.log
+logs/
+*.log.*
+
+# ===== Base de datos / Volúmenes =====
+mysql_data/
+redis_data/
+*.sql.gz
+*.sql.enc
+
+# ===== Caché / Temporal =====
+.cache/
+tmp/
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ===== Cobertura de pruebas =====
+coverage/
+*.coverprofile
+
+# ===== Expo =====
+mobile/.expo-shared/
+mobile/web-build/
+mobile/*.tsbuildinfo
+
+# ===== IDE =====
+*.code-workspace
+
+# ===== Otros =====
+*.bak
+*.orig

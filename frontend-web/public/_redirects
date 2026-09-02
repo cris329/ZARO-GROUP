@@ -1,0 +1,3 @@
+/* Netlify redirects */
+/api/*  https://api.omeblas.com/api/:splat  200
+/*      /index.html  200
