@@ -3,7 +3,7 @@ SHELL := /bin/bash
 .DEFAULT_GOAL := help
 
 help:
-	@echo "OMEBLAS - Gestión agrícola offline-first"
+	@echo "ZARO GROUP - Innovación, gestión y crecimiento"
 	@echo ""
 	@echo "Uso: make [comando]"
 	@echo ""

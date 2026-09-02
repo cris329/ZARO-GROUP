@@ -1,6 +1,6 @@
-# OMEBLAS
+# ZARO GROUP
 
-Plataforma empresarial de gestión agrícola **offline-first** para campesinos colombianos.
+Plataforma empresarial de **Innovación, gestión y crecimiento**.
 
 Monorepo con arquitectura de microservicios en contenedores:
 
@@ -88,4 +88,4 @@ docker compose -f docker-compose.prod.yml up -d --build
 
 ## Licencia
 
-© OMEBLAS. Todos los derechos reservados.
+© ZARO GROUP. Todos los derechos reservados.

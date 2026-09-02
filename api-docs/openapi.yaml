@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
-  title: OMEBLAS API
-  description: API de gestión agrícola offline-first para campesinos colombianos.
+  title: ZARO GROUP API
+  description: API de innovación, gestión y crecimiento offline-first.
   version: 1.0.0
 servers:
-  - url: https://api.omeblas.com/api/v1
+  - url: https://api.zarogroup.com/api/v1
 paths:
   /health:
     get:
