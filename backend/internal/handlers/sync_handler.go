@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/omeblas/omeblas/backend/internal/usecases/sync"
+	"github.com/zaro-group/backend/internal/usecases/sync"
 )
 
 type SyncHandler struct {

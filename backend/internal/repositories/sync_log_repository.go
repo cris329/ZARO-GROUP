@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/domain"
 )
 
 type SyncLogRepository struct {
@@ -37,7 +37,6 @@ func (r *SyncLogRepository) createMany(ctx context.Context, logs []domain.SyncLo
 	`
 
 	for _, log := range logs {
-		now := time.Now().UTC()
 		status := log.Status
 		if status == "" {
 			status = string(domain.SyncPending)

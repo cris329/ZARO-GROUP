@@ -6,9 +6,9 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/omeblas/omeblas/backend/internal/domain"
-	"github.com/omeblas/omeblas/backend/internal/repositories"
-	"github.com/omeblas/omeblas/backend/internal/usecases/products"
+	"github.com/zaro-group/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/repositories"
+	"github.com/zaro-group/backend/internal/usecases/products"
 )
 
 type ProductHandler struct {

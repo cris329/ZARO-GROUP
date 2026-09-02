@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/internal/config"
-	"github.com/omeblas/omeblas/backend/pkg/database"
-	"github.com/omeblas/omeblas/backend/pkg/logger"
+	"github.com/zaro-group/backend/internal/config"
+	"github.com/zaro-group/backend/pkg/database"
+	"github.com/zaro-group/backend/pkg/logger"
 )
 
 func main() {
@@ -20,11 +20,11 @@ func main() {
 		log.Fatalf("Error cargando configuración: %v", err)
 	}
 
-	logger.Init(cfg.LogLevel)
+	logger.Init(cfg.App.LogLevel)
 
 	db, err := database.NewMySQL(cfg)
 	if err != nil {
-		logger.Fatalf("Error conectando a MySQL: %v", err)
+		logger.Fatal("Error conectando a MySQL: %v", err)
 	}
 	defer db.Close()
 
@@ -34,7 +34,7 @@ func main() {
 	}
 
 	server := &http.Server{
-		Addr:         ":" + cfg.BackendPort,
+		Addr:         ":" + cfg.App.BackendPort,
 		Handler:      setupRouter(cfg, db, redisClient),
 		ReadTimeout:  30 * time.Second,
 		WriteTimeout: 30 * time.Second,
@@ -42,9 +42,9 @@ func main() {
 	}
 
 	go func() {
-		logger.Infof("Servidor iniciado en :%s", cfg.BackendPort)
+		logger.Info("Servidor iniciado en :"+cfg.App.BackendPort)
 		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logger.Fatalf("Error iniciando servidor: %v", err)
+			logger.Fatal("Error iniciando servidor: %v", err)
 		}
 	}()
 
@@ -55,7 +55,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	if err := server.Shutdown(ctx); err != nil {
-		logger.Fatalf("Error al apagar servidor: %v", err)
+		logger.Fatal("Error al apagar servidor: %v", err)
 	}
 	logger.Info("Servidor apagado correctamente")
 }

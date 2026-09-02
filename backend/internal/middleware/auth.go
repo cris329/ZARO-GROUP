@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/gin-gonic/gin"
-	"github.com/omeblas/omeblas/backend/internal/config"
-	"github.com/omeblas/omeblas/backend/pkg/crypto"
-	"github.com/omeblas/omeblas/backend/pkg/logger"
+	"github.com/zaro-group/backend/internal/config"
+	"github.com/zaro-group/backend/pkg/crypto"
+	"github.com/zaro-group/backend/pkg/logger"
 )
 
 func Auth(jwtSecret string) gin.HandlerFunc {

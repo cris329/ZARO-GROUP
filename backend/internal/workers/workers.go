@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/pkg/logger"
+	"github.com/zaro-group/backend/pkg/logger"
 )
 
 type Worker interface {

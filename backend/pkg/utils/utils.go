@@ -67,7 +67,7 @@ func RoundTo(value float64, places int) float64 {
 }
 
 func FormatCOP(value float64) string {
-	return "$ " + FormatWithSeparators(math.Round(value))
+	return "$ " + FormatWithSeparators(int64(math.Round(value)))
 }
 
 func FormatWithSeparators(value int64) string {

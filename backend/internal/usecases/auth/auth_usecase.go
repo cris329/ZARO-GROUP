@@ -4,13 +4,13 @@ import (
 	"context"
 	"errors"
 
-	"github.com/omeblas/omeblas/backend/internal/config"
-	"github.com/omeblas/omeblas/backend/internal/domain"
-	"github.com/omeblas/omeblas/backend/internal/interfaces"
-	"github.com/omeblas/omeblas/backend/internal/repositories"
-	"github.com/omeblas/omeblas/backend/pkg/crypto"
-	"github.com/omeblas/omeblas/backend/pkg/utils"
-	"github.com/omeblas/omeblas/backend/pkg/validator"
+	"github.com/zaro-group/backend/internal/config"
+	"github.com/zaro-group/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/interfaces"
+	"github.com/zaro-group/backend/internal/repositories"
+	"github.com/zaro-group/backend/pkg/crypto"
+	"github.com/zaro-group/backend/pkg/utils"
+	"github.com/zaro-group/backend/pkg/validator"
 )
 
 var (

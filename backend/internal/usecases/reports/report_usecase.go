@@ -6,9 +6,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/internal/domain"
-	"github.com/omeblas/omeblas/backend/internal/interfaces"
-	"github.com/omeblas/omeblas/backend/pkg/logger"
+	"github.com/zaro-group/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/interfaces"
+	"github.com/zaro-group/backend/pkg/logger"
 	"github.com/xuri/excelize/v2"
 )
 
@@ -108,7 +108,8 @@ func (uc *ReportUseCase) ExportInventoryExcel(ctx context.Context, userID string
 
 	headers := []string{"ID", "Nombre", "Descripción", "Cantidad", "Precio", "Valor Total"}
 	for i, h := range headers {
-		cell := fmt.Sprintf("%s1", excelize.GetColumnLetter(i+1))
+		col, _ := excelize.ColumnNumberToName(i + 1)
+		cell := fmt.Sprintf("%s1", col)
 		f.SetCellValue(sheet, cell, h)
 	}
 
@@ -153,7 +154,8 @@ func (uc *ReportUseCase) ExportSalesExcel(ctx context.Context, userID string, fr
 
 	headers := []string{"ID", "Cliente", "Teléfono", "Fecha", "Estado", "Total"}
 	for i, h := range headers {
-		cell := fmt.Sprintf("%s1", excelize.GetColumnLetter(i+1))
+		col, _ := excelize.ColumnNumberToName(i + 1)
+		cell := fmt.Sprintf("%s1", col)
 		f.SetCellValue(sheet, cell, h)
 	}
 

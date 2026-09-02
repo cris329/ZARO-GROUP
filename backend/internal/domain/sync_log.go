@@ -44,12 +44,12 @@ type SyncLog struct {
 }
 
 type SyncResult struct {
-	LogsSynced     int              `json:"logs_synced"`
-	Conflicts      []SyncConflict   `json:"conflicts"`
-	SyncedItems    []SyncItemResult `json:"synced_items"`
+	LogsSynced     int                  `json:"logs_synced"`
+	Conflicts      []SyncConflictData   `json:"conflicts"`
+	SyncedItems    []SyncItemResult     `json:"synced_items"`
 }
 
-type SyncConflict struct {
+type SyncConflictData struct {
 	EntityID    string `json:"entity_id"`
 	EntityType  string `json:"entity_type"`
 	ClientData  []byte `json:"client_data"`

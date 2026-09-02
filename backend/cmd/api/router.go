@@ -6,16 +6,17 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis/v8"
 
-	"github.com/omeblas/omeblas/backend/internal/config"
-	"github.com/omeblas/omeblas/backend/internal/handlers"
-	"github.com/omeblas/omeblas/backend/internal/middleware"
-	"github.com/omeblas/omeblas/backend/internal/repositories"
-	"github.com/omeblas/omeblas/backend/internal/usecases/auth"
-	"github.com/omeblas/omeblas/backend/internal/usecases/orders"
-	"github.com/omeblas/omeblas/backend/internal/usecases/products"
-	"github.com/omeblas/omeblas/backend/internal/usecases/reports"
-	"github.com/omeblas/omeblas/backend/internal/usecases/sync"
+	"github.com/zaro-group/backend/internal/config"
+	"github.com/zaro-group/backend/internal/handlers"
+	"github.com/zaro-group/backend/internal/middleware"
+	"github.com/zaro-group/backend/internal/repositories"
+	"github.com/zaro-group/backend/internal/usecases/auth"
+	"github.com/zaro-group/backend/internal/usecases/orders"
+	"github.com/zaro-group/backend/internal/usecases/products"
+	"github.com/zaro-group/backend/internal/usecases/reports"
+	"github.com/zaro-group/backend/internal/usecases/sync"
 )
 
 func setupRouter(cfg *config.Config, db *sql.DB, redisClient *redis.Client) *gin.Engine {

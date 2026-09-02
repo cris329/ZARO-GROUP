@@ -3,7 +3,7 @@ package interfaces
 import (
 	"context"
 
-	"github.com/omeblas/omeblas/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/domain"
 )
 
 type UserRepository interface {

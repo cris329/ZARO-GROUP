@@ -56,7 +56,7 @@ func Load() (*Config, error) {
 		Port:     getEnv("DB_PORT", "3306"),
 		User:     getEnv("MYSQL_USER", "app_user"),
 		Password: getEnv("MYSQL_PASSWORD", ""),
-		Database: getEnv("MYSQL_DATABASE", "omeblas"),
+		Database: getEnv("MYSQL_DATABASE", "zaro_group"),
 	}
 
 	cfg.Redis = RedisConfig{

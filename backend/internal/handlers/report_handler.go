@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/omeblas/omeblas/backend/internal/usecases/reports"
+	"github.com/zaro-group/backend/internal/usecases/reports"
 )
 
 type ReportHandler struct {

@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/omeblas/omeblas/backend/internal/repositories"
-	"github.com/omeblas/omeblas/backend/internal/usecases/orders"
+	"github.com/zaro-group/backend/internal/repositories"
+	"github.com/zaro-group/backend/internal/usecases/orders"
 )
 
 type OrderHandler struct {

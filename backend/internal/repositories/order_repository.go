@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/domain"
 )
 
 type OrderRepository struct {

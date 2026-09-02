@@ -6,11 +6,10 @@ import (
 	"errors"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/internal/domain"
-	"github.com/omeblas/omeblas/backend/internal/interfaces"
-	"github.com/omeblas/omeblas/backend/internal/repositories"
-	"github.com/omeblas/omeblas/backend/pkg/utils"
-	"github.com/omeblas/omeblas/backend/pkg/validator"
+	"github.com/zaro-group/backend/internal/domain"
+	"github.com/zaro-group/backend/internal/interfaces"
+	"github.com/zaro-group/backend/pkg/utils"
+	"github.com/zaro-group/backend/pkg/validator"
 )
 
 type SyncUseCase struct {
@@ -66,7 +65,7 @@ func (uc *SyncUseCase) ProcessPush(ctx context.Context, userID string, req SyncR
 			res := uc.processProduct(ctx, userID, item)
 			result.SyncedItems = append(result.SyncedItems, res)
 			if res.Status == string(domain.SyncConflict) {
-				result.Conflicts = append(result.Conflicts, domain.SyncConflict{
+				result.Conflicts = append(result.Conflicts, domain.SyncConflictData{
 					EntityID:   item.EntityID,
 					EntityType: item.EntityType,
 					Resolution: "server_wins",
@@ -76,7 +75,7 @@ func (uc *SyncUseCase) ProcessPush(ctx context.Context, userID string, req SyncR
 			res := uc.processOrder(ctx, userID, item)
 			result.SyncedItems = append(result.SyncedItems, res)
 			if res.Status == string(domain.SyncConflict) {
-				result.Conflicts = append(result.Conflicts, domain.SyncConflict{
+				result.Conflicts = append(result.Conflicts, domain.SyncConflictData{
 					EntityID:   item.EntityID,
 					EntityType: item.EntityType,
 					Resolution: "server_wins",

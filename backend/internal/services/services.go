@@ -5,7 +5,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/omeblas/omeblas/backend/pkg/logger"
+	"github.com/zaro-group/backend/pkg/logger"
 )
 
 type EmailService interface {
@@ -65,7 +65,7 @@ func (s *NotificationServiceMock) Notify(ctx context.Context, userID, title, bod
 	if userID == "" {
 		return errors.New("user_id requerido")
 	}
-	_ = s.email.Send(ctx, userID+"@omeblas.local", title, body)
+	_ = s.email.Send(ctx, userID+"@zarogroup.local", title, body)
 	return nil
 }
 

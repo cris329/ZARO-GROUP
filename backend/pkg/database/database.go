@@ -12,8 +12,8 @@ import (
 	"github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 
-	"github.com/omeblas/omeblas/backend/internal/config"
-	"github.com/omeblas/omeblas/backend/pkg/logger"
+	"github.com/zaro-group/backend/internal/config"
+	"github.com/zaro-group/backend/pkg/logger"
 )
 
 func NewMySQL(cfg *config.Config) (*sql.DB, error) {
