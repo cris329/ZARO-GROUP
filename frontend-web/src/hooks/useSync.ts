@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSyncStore } from '@/store/syncStore'
 import { syncManager } from '@/services/offline/sync_manager'
 import { useOffline } from './useOffline'

@@ -52,7 +52,7 @@ export const OrderDetail: FC = () => {
           <select
             value={order.status}
             onChange={(e) => {
-              void updateOrder(id, { ...order, status: e.target.value })
+              void updateOrder(id, { ...order, status: e.target.value as Order['status'] })
             }}
             className="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             aria-label="Estado del pedido"

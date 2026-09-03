@@ -10,7 +10,7 @@ import { ROUTES } from '@/utils/constants'
 
 export const Products: FC = () => {
   const navigate = useNavigate()
-  const { products, total, totalPages, page, isLoading, setFilter, fetchProducts } = useProducts()
+  const { products, total, totalPages, page, isLoading, fetchProducts } = useProducts()
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search, 400)
 

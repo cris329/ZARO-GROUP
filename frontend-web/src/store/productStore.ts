@@ -54,7 +54,7 @@ export const useProductStore = create<ProductState>((set, get) => ({
   },
 
   createProduct: async (data) => {
-    const product = await productsService.create(data)
+    const product = await productsService.create(data as Omit<Product, 'id' | 'user_id' | 'synced' | 'version' | 'created_at' | 'updated_at'>)
     await get().fetchProducts()
     return product
   },

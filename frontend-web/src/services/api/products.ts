@@ -3,7 +3,7 @@ import { ApiResponse, Product, ProductList, PaginationParams } from '@/types'
 
 export const productsService = {
   async list(params: PaginationParams = {}): Promise<ProductList> {
-    const res = await get<ApiResponse<ProductList>>('/products', params)
+    const res = await get<ApiResponse<ProductList>>('/products', params as Record<string, unknown>)
     return res.data
   },
 

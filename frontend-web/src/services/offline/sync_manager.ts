@@ -1,6 +1,5 @@
 import { syncService } from '../api/sync'
 import { queueManager, QueueEntry } from './queue_manager'
-import { offlineDB } from './indexeddb'
 import { SyncResult } from '@/types'
 import { withRetry } from '@/utils/helpers'
 

@@ -28,7 +28,14 @@ export const CreateOrder: FC = () => {
     notes: string
   }) => {
     try {
-      await createOrder(data)
+      const orderData = {
+        ...data,
+        products: data.products.map(p => ({
+          ...p,
+          subtotal: p.quantity * p.price
+        }))
+      }
+      await createOrder(orderData)
       navigate(ROUTES.orders)
     } catch {
       // Toast global
