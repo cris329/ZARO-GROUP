@@ -1,6 +1,6 @@
 /**
- * LoginForm - Formulario de login premium con iconos y toggle de contraseña.
- * Diseñado para modo claro/oscuro con estética elegante.
+ * LoginForm - Formulario de login premium con diseño refinado.
+ * Estilo minimalista con campos sutiles y botón dorado.
  * @author = Cristian Deysdayr Jiménez
  */
 import { FC, useState, FormEvent } from 'react'
@@ -10,6 +10,7 @@ import { useTheme } from '@/contexts/ThemeContext'
 export const LoginForm: FC = () => {
   const { login, isLoading } = useAuth()
   const { theme } = useTheme()
+  const isLight = theme === 'light'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -25,20 +26,15 @@ export const LoginForm: FC = () => {
     await login(email, password)
   }
 
-  const isLight = theme === 'light'
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-4">
       {/* Usuario */}
       <div>
-        <label className={`block text-sm font-medium mb-2 ${isLight ? 'text-charcoal-700' : 'text-charcoal-300'}`}>
-          Usuario
-        </label>
         <div className="relative">
           <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none ${
-            isLight ? 'text-gold-500' : 'text-gold-400'
+            isLight ? 'text-[#b8922e]' : 'text-[#c9a84c]'
           }`}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
             </svg>
           </div>
@@ -46,13 +42,13 @@ export const LoginForm: FC = () => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Ingresa tu usuario"
+            placeholder="Usuario"
             autoComplete="username"
             required
-            className={`w-full pl-12 pr-4 py-3.5 rounded-xl text-sm transition-all duration-300 outline-none ${
+            className={`w-full pl-11 pr-4 py-3.5 rounded-xl text-[14px] transition-all duration-300 outline-none ${
               isLight
-                ? 'bg-charcoal-50/50 border border-charcoal-200 text-charcoal-900 placeholder-charcoal-400 focus:border-gold-400 focus:bg-white focus:ring-2 focus:ring-gold-400/20'
-                : 'bg-charcoal-900/50 border border-charcoal-700 text-white placeholder-charcoal-500 focus:border-gold-500 focus:bg-charcoal-900 focus:ring-2 focus:ring-gold-500/20'
+                ? 'bg-[#f8f7f5] border border-[#e8e4dc] text-[#1a1a1a] placeholder-[#b0b0b0] focus:border-[#d4a843] focus:bg-white focus:ring-1 focus:ring-[#d4a843]/20'
+                : 'bg-[#242424] border border-[#333] text-[#f0ece4] placeholder-[#666] focus:border-[#c9a84c] focus:bg-[#282828] focus:ring-1 focus:ring-[#c9a84c]/20'
             }`}
           />
         </div>
@@ -63,14 +59,11 @@ export const LoginForm: FC = () => {
 
       {/* Contraseña */}
       <div>
-        <label className={`block text-sm font-medium mb-2 ${isLight ? 'text-charcoal-700' : 'text-charcoal-300'}`}>
-          Contraseña
-        </label>
         <div className="relative">
           <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none ${
-            isLight ? 'text-gold-500' : 'text-gold-400'
+            isLight ? 'text-[#b8922e]' : 'text-[#c9a84c]'
           }`}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+            <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
             </svg>
           </div>
@@ -78,13 +71,13 @@ export const LoginForm: FC = () => {
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Ingresa tu contraseña"
+            placeholder="Contraseña"
             autoComplete="current-password"
             required
-            className={`w-full pl-12 pr-12 py-3.5 rounded-xl text-sm transition-all duration-300 outline-none ${
+            className={`w-full pl-11 pr-12 py-3.5 rounded-xl text-[14px] transition-all duration-300 outline-none ${
               isLight
-                ? 'bg-charcoal-50/50 border border-charcoal-200 text-charcoal-900 placeholder-charcoal-400 focus:border-gold-400 focus:bg-white focus:ring-2 focus:ring-gold-400/20'
-                : 'bg-charcoal-900/50 border border-charcoal-700 text-white placeholder-charcoal-500 focus:border-gold-500 focus:bg-charcoal-900 focus:ring-2 focus:ring-gold-500/20'
+                ? 'bg-[#f8f7f5] border border-[#e8e4dc] text-[#1a1a1a] placeholder-[#b0b0b0] focus:border-[#d4a843] focus:bg-white focus:ring-1 focus:ring-[#d4a843]/20'
+                : 'bg-[#242424] border border-[#333] text-[#f0ece4] placeholder-[#666] focus:border-[#c9a84c] focus:bg-[#282828] focus:ring-1 focus:ring-[#c9a84c]/20'
             }`}
           />
           <button
@@ -92,17 +85,17 @@ export const LoginForm: FC = () => {
             onClick={() => setShowPassword(!showPassword)}
             className={`absolute inset-y-0 right-0 pr-4 flex items-center transition-colors ${
               isLight
-                ? 'text-charcoal-400 hover:text-gold-500'
-                : 'text-charcoal-500 hover:text-gold-400'
+                ? 'text-[#b0b0b0] hover:text-[#b8922e]'
+                : 'text-[#666] hover:text-[#c9a84c]'
             }`}
             aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
           >
             {showPassword ? (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
               </svg>
             ) : (
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <svg className="w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
@@ -118,10 +111,10 @@ export const LoginForm: FC = () => {
       <button
         type="submit"
         disabled={isLoading}
-        className={`w-full py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 mt-2 ${
+        className={`w-full py-3.5 rounded-xl text-[14px] font-semibold transition-all duration-300 mt-2 ${
           isLoading
-            ? 'bg-gold-400/50 text-white/70 cursor-not-allowed'
-            : 'bg-gradient-to-r from-gold-500 to-gold-600 text-white hover:from-gold-600 hover:to-gold-700 shadow-gold hover:shadow-lg active:scale-[0.98]'
+            ? 'bg-[#c9a84c]/50 text-white/70 cursor-not-allowed'
+            : 'bg-gradient-to-r from-[#c9a84c] via-[#d4a843] to-[#b8922e] text-white hover:from-[#b8922e] hover:via-[#c9a84c] hover:to-[#a8862a] shadow-[0_4px_16px_rgba(184,146,46,0.3)] hover:shadow-[0_6px_24px_rgba(184,146,46,0.4)] active:scale-[0.98]'
         }`}
       >
         {isLoading ? (
