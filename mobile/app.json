@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#16a34a"
+      "backgroundColor": "#b8922e"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
@@ -22,14 +22,14 @@
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#16a34a"
+        "backgroundColor": "#b8922e"
       },
       "permissions": ["INTERNET", "ACCESS_NETWORK_STATE", "VIBRATE"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-secure-store"],
+    "plugins": [],
     "extra": {
       "eas": {
         "projectId": "PROJECT_ID"

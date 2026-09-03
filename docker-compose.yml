@@ -79,7 +79,6 @@ services:
       - backend
     networks:
       - zaro_net
-    read_only: true
     tmpfs:
       - /tmp
     restart: unless-stopped
